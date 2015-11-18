@@ -1,0 +1,31 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-08-04T12:43:08
+#
+#-------------------------------------------------
+
+QT       += core gui widgets multimedia
+
+
+TARGET = Oscillator
+TEMPLATE = app
+
+INCLUDEPATH += ../audioEngine
+
+SOURCES += main.cpp\
+        mainwindow.cpp\
+        oscillatorsource.cpp\
+    oscillator.cpp \
+    envelope.cpp \
+    voicemanager.cpp
+
+HEADERS  += mainwindow.h \
+    oscillatorsource.h\
+    oscillator.h \
+    envelope.h \
+    voicemanager.h
+
+FORMS    += mainwindow.ui
+
+include(../drumstick/drumstick.pro)
+include(../audioEngine/audioplayer.pri)
