@@ -1,6 +1,8 @@
 #include <QDebug>
 #include <math.h>
 #include "envelope.h"
+#include "QDebug"
+
 const float MIN_GAIN_DB = -100;
 
 inline float dB2gain(float dB){
@@ -11,7 +13,7 @@ inline float gain2dB(float gain){
 }
 
 Envelope::Envelope()
-    : sampleRate(0), gain(0), state(OFF), releaseSeconds(0)
+    : sampleRate(44100), gain(0), state(OFF), releaseSeconds(0)
     , attackSeconds(0), decaySeconds(0)
     , sustain_dB(MIN_GAIN_DB), minGain_dB(MIN_GAIN_DB)
 {
@@ -41,6 +43,7 @@ void Envelope::setState(State state){
     // avoid division by zero
     if (state == ATTACK && attackSeconds == 0){
         setState(DECAY);
+        qDebug() << attackSeconds;
     }
     else if (state == DECAY && decaySeconds == 0){
         setState(SUSTAIN);

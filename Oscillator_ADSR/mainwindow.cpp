@@ -46,7 +46,7 @@ void MainWindow::initializeAudio(){
     on_dialRelease_valueChanged(ui->dialRelease->value());
     ui->labelRelease->setNum(ui->dialRelease->value());
 
-    audioPlayer.setAudioSource(&oscillatorSource);
+    audioPlayer.setAudioSource(&OscillatorSource);
     audioPlayer.start();
 }
 
@@ -62,21 +62,21 @@ void MainWindow::on_frequencySlider_valueChanged(int value)
     float frequency = pow(10, scaledValue);
 
     ui->frequencyLabel->setText(QString::number((int)frequency));
-    oscillatorSource.setFrequency(frequency);
+    oscillator.setFrequency(frequency);
 }
 
 void MainWindow::on_waveformCombobox_activated(int index)
 {
-    oscillatorSource.setSelectedOscillator(index);
+    Voice.setSelectedOscillator(index);
 }
 
 void MainWindow::on_gainSlider_valueChanged(int value)
 {
-    oscillatorSource.setGain(value);
+    Voice.setGain(value);
 }
 
 void MainWindow::onMidiNoteOff(const int chan, const int note, const int vel){
-    VoiceManager.noteOff(note);
+    OscillatorSource.noteOff(note);
 }
 
 void MainWindow::onMidiNoteOn(const int chan, const int note, const int vel){
@@ -84,7 +84,7 @@ void MainWindow::onMidiNoteOn(const int chan, const int note, const int vel){
         onMidiNoteOff(chan,note,vel);
     }
     else {
-    VoiceManager.noteOn(note,vel);
+    OscillatorSource.noteOn(note,vel);
     }
 }
 
@@ -93,130 +93,130 @@ void MainWindow::on_note_1_clicked(bool checked)
     qDebug() << "note 1";
 
     if (checked){
-        VoiceManager.noteOn(60,127);
+        OscillatorSource.noteOn(60,127);
     }
     else{
-        VoiceManager.noteOff(60);
+        OscillatorSource.noteOff(60);
     }
 }
 
 void MainWindow::on_note_2_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 
 void MainWindow::on_note_3_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_4_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_5_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_6_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_7_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_8_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_9_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_10_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_11_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 void MainWindow::on_note_12_clicked(bool checked)
 {
     if (checked){
-        VoiceManager.noteOn(61,127);
+        OscillatorSource.noteOn(61,127);
     }
     else{
-        VoiceManager.noteOff(61);
+        OscillatorSource.noteOff(61);
     }
 }
 
 void MainWindow::on_dialAttack_valueChanged(int value)
 {
-    oscillatorSource.setAttackSeconds(value/100.f);
+    Voice.setAttackSeconds(value/100.f);
 }
 
 void MainWindow::on_dialDecay_valueChanged(int value)
 {
-    oscillatorSource.setDecaySeconds(value/100.f);
+    Voice.setDecaySeconds(value/100.f);
 }
 
 void MainWindow::on_dialSustain_valueChanged(int value)
 {
-    oscillatorSource.setSustain_dB(value - 100);
+    Voice.setSustain_dB(value - 100);
 }
 
 void MainWindow::on_dialRelease_valueChanged(int value)
 {
-    oscillatorSource.setReleaseSeconds(value/100.f);
+    Voice.setReleaseSeconds(value/100.f);
 }

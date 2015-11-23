@@ -5,7 +5,7 @@
 const float pi = 3.1415926f;
 
 Oscillator::Oscillator()
-: sampleRate(0), index(0), frequency(0), type(SINE), gain(1)
+: sampleRate(44100), index(0), frequency(0), type(SINE), gain(1)
 {}
 
 void Oscillator::initialize(float sampleRate){
@@ -71,5 +71,3 @@ float Oscillator::noise()
     float random = rand();
     return gain * 2 * random / RAND_MAX - 1;
 }
-
-

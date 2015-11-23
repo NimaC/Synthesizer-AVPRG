@@ -7,7 +7,7 @@
 #include "audioplayer.h"
 #include "oscillatorsource.h"
 #include "midiinput.h"
-#include "voicemanager.h"
+#include "envelope.h"
 
 namespace Ui {
 class MainWindow;
@@ -58,10 +58,12 @@ private:
     void initializeAudio();
     void initializeMidi();
     Ui::MainWindow *ui;
-    OscillatorSource oscillatorSource;
+    OscillatorSource OscillatorSource;
     AudioPlayer audioPlayer;
     drumstick::rt::MIDIInput midiInput;
-    VoiceManager VoiceManager;
+    Voice Voice;
+    Oscillator oscillator;
+    Envelope envelope;
 };
 
 #endif // MAINWINDOW_H

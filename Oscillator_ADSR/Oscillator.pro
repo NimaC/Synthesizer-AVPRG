@@ -17,13 +17,13 @@ SOURCES += main.cpp\
         oscillatorsource.cpp\
     oscillator.cpp \
     envelope.cpp \
-    voicemanager.cpp
+    voice.cpp
 
 HEADERS  += mainwindow.h \
-    oscillatorsource.h\
     oscillator.h \
     envelope.h \
-    voicemanager.h
+    voice.h \
+    oscillatorsource.h
 
 FORMS    += mainwindow.ui
 

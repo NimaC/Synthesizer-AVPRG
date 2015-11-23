@@ -1,5 +1,6 @@
 #include <math.h>
 #include "oscillatorsource.h"
+#include <QDebug>
 
 OscillatorSource::OscillatorSource()
 {
@@ -8,67 +9,26 @@ OscillatorSource::OscillatorSource()
     audioFormat.setChannelCount(2);
     audioFormat.setSampleSize(32);
     audioFormat.setSampleType(QAudioFormat::Float);
-    audioFormat.setSampleRate(44100);
+    audioFormat.setSampleRate(sampleRate);
 }
 
-void OscillatorSource::setSelectedOscillator(int index){
-    oscillator.setType((Oscillator::Type)index);
-}
-
-void OscillatorSource::setFrequency(float frequency){
-    oscillator.setFrequency(frequency);
-}
-
-void OscillatorSource::setNote(int noteNumber){
-    onoteNumber = noteNumber;
-    float frequency = 440.0 * pow(2.0, (noteNumber - 69.0)/12.0);
-    setFrequency(frequency);
-}
-
-void OscillatorSource::setGain(float decibel){
-    float gain = pow(10, decibel/20.f);
-    oscillator.setGain(gain);
-}
-void OscillatorSource::noteOn(){
-    envelope.setState(Envelope::ATTACK);
-}
-void OscillatorSource::noteOff(){
-    envelope.setState(Envelope::RELEASE);
-}
-void OscillatorSource::setAttackSeconds(float value){
-    envelope.setAttackSeconds(value);
-}
-
-void OscillatorSource::setDecaySeconds(float value){
-    envelope.setDecaySeconds(value);
-}
-
-void OscillatorSource::setReleaseSeconds(float value){
-    envelope.setReleaseSeconds(value);
-}
-
-void OscillatorSource::setSustain_dB(float value){
-    envelope.setSustain_dB(value);
+const int OscillatorSource::getSampleRate() {
+    return sampleRate;
 }
 
 void OscillatorSource::start(){
     oscillator.initialize(audioFormat.sampleRate());
     envelope.setSampleRate(audioFormat.sampleRate());
 }
+
 const QAudioFormat& OscillatorSource::format() const{
     return audioFormat;
-}
-
-float OscillatorSource::createSample(){
-    float sample = oscillator.getValue();
-    sample = envelope.process(sample);
-    return sample;
 }
 
 qint64 OscillatorSource::read(float** buffer, qint64 numFrames){
     // get audio data for left channel
     for(int i = 0; i < numFrames; i++){
-        buffer[0][i] = createSample();
+        buffer[0][i] = nextSample();
     }
     // copy to other channels
     for(int c = 0; c < audioFormat.channelCount(); c++){
@@ -77,6 +37,50 @@ qint64 OscillatorSource::read(float** buffer, qint64 numFrames){
         }
     }
     return numFrames;
+}
+
+Voice* OscillatorSource::findFreeVoice() {
+    Voice* freeVoice = NULL;
+    for (int i = 0; i < NumberOfVoices; i++) {
+            qDebug() << i << " " <<  voices[i].isActive;
+        if (!voices[i].isActive) {
+            freeVoice = &(voices[i]);
+            break;
+        }
+    }
+    return freeVoice;
+}
+
+void OscillatorSource::noteOn(const int noteNumber,const int velocity) {
+    Voice* voice = findFreeVoice();
+    if (!voice) {
+        return;
+    }
+    int gain = velocity-127;
+    voice->setNote(noteNumber);
+    voice->setGain(gain);
+    voice->isActive = true;
+    voice->onNoteOn();
+}
+
+void OscillatorSource::noteOff(int noteNumber) {
+    // Find the voice(s) with the given noteNumber:
+    for (int i = 0; i < NumberOfVoices; i++) {
+        Voice& voice = voices[i];
+        if (voice.isActive && voice.onoteNumber == noteNumber) {
+            voice.isActive = false;
+            voice.onNoteOff();
+        }
+    }
+}
+
+float OscillatorSource::nextSample() {
+    float output = 0;
+    for (int i = 0; i < NumberOfVoices; i++) {
+        Voice& voice = voices[i];
+        output += voice.createSample();
+    }
+    return output;
 }
 
 void OscillatorSource::stop(){}
