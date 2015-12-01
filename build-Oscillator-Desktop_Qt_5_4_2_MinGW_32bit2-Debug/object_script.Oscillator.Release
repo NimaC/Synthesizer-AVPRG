@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\oscillatorsource.o
+./release\oscillator.o
+./release\envelope.o
+./release\voice.o
+./release\winmidiinput.o
+./release\winmidioutput.o
+./release\audioplayer.o
+./release\channelbuffer.o
+./release\moc_mainwindow.o
+./release\moc_midiinput.o
+./release\moc_midioutput.o
+./release\moc_audioplayer.o
+);

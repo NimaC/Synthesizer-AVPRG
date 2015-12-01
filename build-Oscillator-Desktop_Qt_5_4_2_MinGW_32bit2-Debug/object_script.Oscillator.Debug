@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\oscillatorsource.o
+./debug\oscillator.o
+./debug\envelope.o
+./debug\voice.o
+./debug\winmidiinput.o
+./debug\winmidioutput.o
+./debug\audioplayer.o
+./debug\channelbuffer.o
+./debug\moc_mainwindow.o
+./debug\moc_midiinput.o
+./debug\moc_midioutput.o
+./debug\moc_audioplayer.o
+);
