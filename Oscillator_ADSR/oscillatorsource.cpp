@@ -39,7 +39,7 @@ Voice* OscillatorSource::findFreeVoice() {
     Voice* freeVoice = NULL;
     for (int i = 0; i < NumberOfVoices; i++) {
         voices[i].setInactive();
-        qDebug() << i << " " <<  voices[i].isActive;
+       //qDebug() << i << " " <<  voices[i].isActive;
         if (!voices[i].isActive) {
             freeVoice = &(voices[i]);
             break;
@@ -74,9 +74,7 @@ void OscillatorSource::noteOn(const int noteNumber,const int velocity) {
         return;
     }
     float vel = velocity-127;
-    float gain = pow(10, vel/20.f);
-    qDebug() << vel << gain;
-    voice->setGain(gain);
+    voice->setGain(-10);
     voice->setNote(noteNumber);
     voice->setSelectedOscillator(osciIndex);
     voice->setAttackSeconds(attackSeconds);
