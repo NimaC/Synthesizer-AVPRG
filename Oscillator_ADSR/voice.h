@@ -19,7 +19,11 @@ public:
     void setDecaySeconds(float value);
     void setReleaseSeconds(float value);
     void setSustain_dB(float value);
+<<<<<<< HEAD
     void setInactive();
+=======
+
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 private:
     float createSample();
     Envelope envelope;

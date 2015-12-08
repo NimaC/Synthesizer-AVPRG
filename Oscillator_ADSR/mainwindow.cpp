@@ -67,7 +67,11 @@ void MainWindow::on_frequencySlider_valueChanged(int value)
 
 void MainWindow::on_waveformCombobox_activated(int index)
 {
+<<<<<<< HEAD
     OscillatorSource.setSelectedOscillator(index);
+=======
+    Voice.setSelectedOscillator(index);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }
 
 void MainWindow::on_gainSlider_valueChanged(int value)
@@ -113,110 +117,196 @@ void MainWindow::on_note_2_clicked(bool checked)
 void MainWindow::on_note_3_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(62,127);
     }
     else{
         OscillatorSource.noteOff(62);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_4_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(63,127);
     }
     else{
         OscillatorSource.noteOff(63);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_5_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(64,127);
     }
     else{
         OscillatorSource.noteOff(64);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_6_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(65,127);
     }
     else{
         OscillatorSource.noteOff(65);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_7_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(66,127);
     }
     else{
         OscillatorSource.noteOff(66);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_8_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(67,127);
     }
     else{
         OscillatorSource.noteOff(67);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_9_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(68,127);
     }
     else{
         OscillatorSource.noteOff(68);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_10_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(69,127);
     }
     else{
         OscillatorSource.noteOff(69);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_11_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(70,127);
     }
     else{
         OscillatorSource.noteOff(70);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 void MainWindow::on_note_12_clicked(bool checked)
 {
     if (checked){
+<<<<<<< HEAD
         OscillatorSource.noteOn(71,127);
     }
     else{
         OscillatorSource.noteOff(71);
+=======
+        OscillatorSource.noteOn(61,127);
+    }
+    else{
+        OscillatorSource.noteOff(61);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
 }
 
 void MainWindow::on_dialAttack_valueChanged(int value)
 {
+<<<<<<< HEAD
     OscillatorSource.setAttackSeconds(value/100.f);
+=======
+    Voice.setAttackSeconds(value/100.f);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }
 
 void MainWindow::on_dialDecay_valueChanged(int value)
 {
+<<<<<<< HEAD
     OscillatorSource.setDecaySeconds(value/100.f);
+=======
+    Voice.setDecaySeconds(value/100.f);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }
 
 void MainWindow::on_dialSustain_valueChanged(int value)
 {
+<<<<<<< HEAD
     OscillatorSource.setSustain_dB(value - 100);
+=======
+    Voice.setSustain_dB(value - 100);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }
 
 void MainWindow::on_dialRelease_valueChanged(int value)
 {
+<<<<<<< HEAD
     OscillatorSource.setReleaseSeconds(value/20.f);
+=======
+    Voice.setReleaseSeconds(value/100.f);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }

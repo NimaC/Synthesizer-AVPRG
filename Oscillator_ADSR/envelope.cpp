@@ -78,6 +78,10 @@ void Envelope::setState(State state){
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 float Envelope::process(float input){
     if(state == ATTACK && gain >= 1){
         setState(DECAY);
@@ -87,12 +91,16 @@ float Envelope::process(float input){
     }
     if (state == RELEASE && gain < minGain){
         setState(OFF);
+<<<<<<< HEAD
         return 0;
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     }
     gain *= gainChange;
 
     return gain * input;
 }
+<<<<<<< HEAD
 
 bool Envelope::isOff() {
     if (state == OFF) {
@@ -102,3 +110,5 @@ bool Envelope::isOff() {
         return false;
     }
 }
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33

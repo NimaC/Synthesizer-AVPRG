@@ -9,7 +9,15 @@ OscillatorSource::OscillatorSource()
     audioFormat.setChannelCount(2);
     audioFormat.setSampleSize(32);
     audioFormat.setSampleType(QAudioFormat::Float);
+<<<<<<< HEAD
     audioFormat.setSampleRate(44100);
+=======
+    audioFormat.setSampleRate(sampleRate);
+}
+
+const int OscillatorSource::getSampleRate() {
+    return sampleRate;
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 }
 
 void OscillatorSource::start(){
@@ -38,8 +46,12 @@ qint64 OscillatorSource::read(float** buffer, qint64 numFrames){
 Voice* OscillatorSource::findFreeVoice() {
     Voice* freeVoice = NULL;
     for (int i = 0; i < NumberOfVoices; i++) {
+<<<<<<< HEAD
         voices[i].setInactive();
        //qDebug() << i << " " <<  voices[i].isActive;
+=======
+            qDebug() << i << " " <<  voices[i].isActive;
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
         if (!voices[i].isActive) {
             freeVoice = &(voices[i]);
             break;
@@ -48,6 +60,7 @@ Voice* OscillatorSource::findFreeVoice() {
     return freeVoice;
 }
 
+<<<<<<< HEAD
 void OscillatorSource::setSelectedOscillator(int index){
     osciIndex = index;
 }
@@ -68,11 +81,14 @@ void OscillatorSource::setSustain_dB(float value){
     sustain_dB=value;
 }
 
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 void OscillatorSource::noteOn(const int noteNumber,const int velocity) {
     Voice* voice = findFreeVoice();
     if (!voice) {
         return;
     }
+<<<<<<< HEAD
     float vel = velocity-127;
     voice->setGain(-10);
     voice->setNote(noteNumber);
@@ -81,6 +97,11 @@ void OscillatorSource::noteOn(const int noteNumber,const int velocity) {
     voice->setDecaySeconds(decaySeconds);
     voice->setReleaseSeconds(releaseSeconds);
     voice->setSustain_dB(sustain_dB);
+=======
+    int gain = velocity-127;
+    voice->setNote(noteNumber);
+    voice->setGain(gain);
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
     voice->isActive = true;
     voice->onNoteOn();
 }
@@ -90,6 +111,10 @@ void OscillatorSource::noteOff(int noteNumber) {
     for (int i = 0; i < NumberOfVoices; i++) {
         Voice& voice = voices[i];
         if (voice.isActive && voice.onoteNumber == noteNumber) {
+<<<<<<< HEAD
+=======
+            voice.isActive = false;
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
             voice.onNoteOff();
         }
     }

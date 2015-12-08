@@ -14,7 +14,10 @@ public:
     void setAttackSeconds(float seconds);
     void setDecaySeconds(float seconds);
     void setSustain_dB(float sustain_dB);
+<<<<<<< HEAD
     bool isOff();
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 private:
     State state;
     float sampleRate;

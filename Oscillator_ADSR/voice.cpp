@@ -1,6 +1,9 @@
 #include "voice.h"
 #include <math.h>
+<<<<<<< HEAD
 #include <QDebug>
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 
 Voice::Voice()
 :   isActive(false), onoteNumber(0)
@@ -10,12 +13,15 @@ void Voice::setSelectedOscillator(int index){
     oscillator.setType((Oscillator::Type)index);
 }
 
+<<<<<<< HEAD
 void Voice::setInactive() {
     if (envelope.isOff()) {
     isActive = false;
     }
 }
 
+=======
+>>>>>>> 2373887b5c6b253f4256e0c99fadcf80f2be6b33
 void Voice::setFrequency(float frequency){
     oscillator.setFrequency(frequency);
 }
